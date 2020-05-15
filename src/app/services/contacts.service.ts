@@ -8,9 +8,9 @@ export class ContactsProvider {
   private contacts: Contact[] = [];
 
   constructor() {
-    this.addContact({ email: 'alex@upv.es', name: 'Alejandro', surname: 'Perez' });
-    this.addContact({ email: 'bea@upv.es', name: 'Beatriz', surname: 'Canto' });
-    this.addContact({ email: 'salva@upv.es', name: 'Salvador', surname: 'Fernandez' });
+    this.addContact({ email: 'mimaca1@inf.upv.es', name: 'Miguel Angel', surname: 'Mateo Casali' });
+    this.addContact({ email: 'lamoru@bbaa.upv.es', name: 'Laura', surname: 'Moya Ruiz' });
+    this.addContact({ email: 'anonimo@upv.es', name: 'Anon', surname: 'Imo' });
   }
   //Añadir
   addContact(contact: Contact): Contact {
