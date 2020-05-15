@@ -28,13 +28,8 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/contacts',
-    pathMatch: 'full'
-  }
-];
+  }];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

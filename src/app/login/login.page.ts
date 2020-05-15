@@ -17,9 +17,9 @@ export class LoginPage implements OnInit {
   ngOnInit() { }
   
   doLogin() {
-    console.log('[LoginPage] doLogin()');
+    console.log('[Login.Page] Funcion: doLogin()');
     if (this.login.login(this.user, this.password))
       this.router.navigateByUrl('/tabs');
   }
-  
+
 }
