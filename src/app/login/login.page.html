@@ -1,11 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <input style="display: block; margin: 20px auto; padding: 10px;" type="text" placeholder="Enter user" [(ngModel)]="user">
-  <input style="display: block; margin: 20px auto; padding: 10px" type="text" placeholder="Enter password" [(ngModel)]="password">
-  <button style="display: block; margin: 20px auto; padding: 10px" (click)="doLogin()">Login</button>
+  <ion-list style="padding: 0px 20px;">
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" [(ngModel)]="user"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div style="padding: 20px 20px;">
+    <ion-button color="primary" expand="block" (click)="doLogin()">Login</ionbutton>
+  </div>
 </ion-content>
