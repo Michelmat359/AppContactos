@@ -22,16 +22,16 @@ export class ContactsPage implements OnInit {
     this.myContacts = this.contacts.listContacts().sort();
   }
 
-  removeContact(contact: Contact) {
+  async removeContact(contact: Contact) {
     console.log(`[ContactsPage] removeContact(${contact.id})`);
-    this.alertCtrl.create({
+    const alert = await this.alertCtrl.create({
       header: 'Eliminar contacto',
       message: '¿Estas seguro?',
       buttons: [
         {
           text: 'Cancelar',
           role: 'cancel',
-          handler: () => { console.log('Cancel clicked'); }
+          handler: () => { console.log('Cancelado'); }
         },
         {
           text: 'Aceptar',
@@ -41,7 +41,11 @@ export class ContactsPage implements OnInit {
           }
         }
       ]
-    }).then((alert) => alert.present());
+    });
+    await alert.present();
   }
+
+
+
 }
 
