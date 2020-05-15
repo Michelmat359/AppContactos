@@ -1,0 +1,7 @@
+{
+  "name": "AppContactos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
