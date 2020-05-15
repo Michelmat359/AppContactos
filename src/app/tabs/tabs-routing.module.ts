@@ -4,24 +4,24 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
         path: 'contacts',
-        loadChildren: () => import('../contacts/contacts.module').then( m =>
-       m.ContactsPageModule)
-        },
-        {
+        loadChildren: () => import('../contacts/contacts.module').then(m =>
+          m.ContactsPageModule)
+      },
+      {
         path: 'search',
-        loadChildren: () => import('../search/search.module').then( m =>
-       m.SearchPageModule)
-        },
-        {
+        loadChildren: () => import('../search/search.module').then(m =>
+          m.SearchPageModule)
+      },
+      {
         path: 'map',
-        loadChildren: () => import('../map/map.module').then( m =>
-       m.MapPageModule)
-        },       
+        loadChildren: () => import('../map/map.module').then(m =>
+          m.MapPageModule)
+      },
       {
         path: '',
         redirectTo: '/tabs/contacts',
@@ -40,4 +40,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }
