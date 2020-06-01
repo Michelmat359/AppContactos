@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Contact } from '../models/contact';
 import { ContactsProvider } from '../services/contacts.service';
 import { AlertController } from '@ionic/angular';
+import { RESTContactsService } from '../services/restcontacts.service';
+
 
 
 @Component({
@@ -10,16 +13,28 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./contacts.page.scss'],
 })
 
-export class ContactsPage implements OnInit {
+export class ContactsPage implements OnInit, OnDestroy {
   private myContacts: Contact[];
-  constructor(private contacts: ContactsProvider, private alertCtrl: AlertController) { }
+
+  constructor(private contacts: RESTContactsService, private alertCtrl: AlertController, private subscription: Subscription, private changes: ChangeDetectorRef) { }
+
   ngOnInit() {
     console.log('ngOnInit ContactsPage');
     this.listContacts();
   }
+
+  ngOnDestroy() {
+    console.log('ngOnDestroy ContactsPage');
+    this.subscription.unsubscribe();
+  }
+
   listContacts() {
     console.log('[ContactsPage] listContacts()');
-    this.myContacts = this.contacts.listContacts().sort();
+    this.contacts.listContacts()
+      .then((contacts) => {
+        this.myContacts = contacts.sort();
+        this.changes.detectChanges();
+      });
   }
 
   async removeContact(contact: Contact) {
@@ -36,8 +51,9 @@ export class ContactsPage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this.contacts.removeContact(contact.id);
-            this.listContacts();
+            this.contacts.removeContact(contact.id)
+              .then(() => this.listContacts());
+
           }
         }
       ]

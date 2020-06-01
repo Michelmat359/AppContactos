@@ -1,0 +1,46 @@
+<ion-menu contentId="tabs">
+  <ion-content>
+    <ion-list style="padding-top: 0px;">
+      <ion-item color="primary">
+        <ion-avatar slot="start">
+          <img [src]="user?.avatar || '/assets/imgs/avatar.png'">
+        </ion-avatar>
+        <ion-label>
+          <ion-text>
+            <h2>{{ user?.name }} {{ user?.surname }}</h2>
+            <p>{{ user?.email }}</p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      <ion-menu-toggle>
+        <ion-item (click)="editUser()">
+          <ion-label>Edit account</ion-label>
+          <ion-icon name="create" slot="start"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item routerLink="/">
+          <ion-label>Exit</ion-label>
+          <ion-icon name="exit" slot="start"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-tabs id="tabs">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="contacts">
+      <ion-icon name="people"></ion-icon>
+      <ion-label>Contacts</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="search">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="map">
+      <ion-icon name="pin"></ion-icon>
+      <ion-label>Map</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
