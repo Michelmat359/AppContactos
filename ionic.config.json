@@ -1,7 +1,8 @@
 {
   "name": "AppContactos",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
