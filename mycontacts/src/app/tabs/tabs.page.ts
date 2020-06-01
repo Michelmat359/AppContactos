@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserPage } from '../user/user.page';
 import { LoginService } from '../services/login.service';
+import { LocationService } from '../services/location.service';
+
 
 
 @Component({
@@ -15,7 +17,7 @@ import { LoginService } from '../services/login.service';
 
 export class TabsPage implements OnInit {
   private user: User;
-  constructor(private login: LoginService, private router: Router, private modalCtrl: ModalController) { }
+  constructor(private location: LocationService, private login: LoginService, private router: Router, private modalCtrl: ModalController) { }
 
   
   ngOnInit() {

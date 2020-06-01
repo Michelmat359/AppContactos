@@ -5,4 +5,6 @@ export interface User {
     name: string;
     surname: string;
     avatar?: string;
+    position?: {lat: number, lon: number, ts: number};
+
    }

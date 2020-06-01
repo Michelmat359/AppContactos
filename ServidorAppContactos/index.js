@@ -81,6 +81,7 @@ app.put('/mycontacts/users/:userId', function (req, res) {
         db[userId].name = req.body.name || db[userId].name;
         db[userId].surname = req.body.surname || db[userId].surname;
         db[userId].avatar = req.body.avatar || db[userId].avatar;
+        db[userId].position = req.body.position || db[userId].position;
         res.send({
             id: db[userId].id, email: db[userId].email,
             name: db[userId].name, surname: db[userId].surname,

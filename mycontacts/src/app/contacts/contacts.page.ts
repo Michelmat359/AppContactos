@@ -1,9 +1,12 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef,  } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Contact } from '../models/contact';
 import { ContactsProvider } from '../services/contacts.service';
 import { AlertController } from '@ionic/angular';
 import { RESTContactsService } from '../services/restcontacts.service';
+import { LocationService } from '../services/location.service';
+import { Event, NavigationEnd } from '@angular/router';
 
 
 
@@ -16,12 +19,19 @@ import { RESTContactsService } from '../services/restcontacts.service';
 export class ContactsPage implements OnInit, OnDestroy {
   private myContacts: Contact[];
 
-  constructor(private contacts: RESTContactsService, private alertCtrl: AlertController, private subscription: Subscription, private changes: ChangeDetectorRef) { }
+  constructor( private router: Router, private location: LocationService, private contacts: RESTContactsService, private alertCtrl: AlertController, private subscription: Subscription, private changes: ChangeDetectorRef) { }
 
   ngOnInit() {
     console.log('ngOnInit ContactsPage');
+    this.subscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd
+        && e.urlAfterRedirects == '/tabs/contacts') {
+        this.listContacts();
+      }
+    });
     this.listContacts();
   }
+
 
   ngOnDestroy() {
     console.log('ngOnDestroy ContactsPage');
